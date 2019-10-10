@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSlotsServer", "..\..\..\..\Downloads\DIS\MailSlotsServer\MailSlotsServer\MailSlotsServer.csproj", "{59F51B45-57D3-408E-BBDE-BBB8F19AC60C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSlotsServer", "MailSlotsServer\MailSlotsServer.csproj", "{59F51B45-57D3-408E-BBDE-BBB8F19AC60C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSlotsClient", "..\..\..\..\Downloads\DIS\MailSlotsClient\MailSlotsClient\MailSlotsClient.csproj", "{839A704F-D7A6-4BB6-A349-3DCA681DB55D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSlotsClient", "MailSlotsClient\MailSlotsClient.csproj", "{839A704F-D7A6-4BB6-A349-3DCA681DB55D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
