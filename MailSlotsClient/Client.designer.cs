@@ -39,7 +39,7 @@
             // btnSend
             // 
             this.btnSend.Enabled = false;
-            this.btnSend.Location = new System.Drawing.Point(274, 44);
+            this.btnSend.Location = new System.Drawing.Point(304, 44);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(91, 26);
             this.btnSend.TabIndex = 3;
@@ -49,7 +49,7 @@
             // 
             // tbMessage
             // 
-            this.tbMessage.Location = new System.Drawing.Point(86, 48);
+            this.tbMessage.Location = new System.Drawing.Point(116, 48);
             this.tbMessage.Name = "tbMessage";
             this.tbMessage.Size = new System.Drawing.Size(181, 20);
             this.tbMessage.TabIndex = 1;
@@ -65,7 +65,7 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(274, 6);
+            this.btnConnect.Location = new System.Drawing.Point(304, 6);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(91, 26);
             this.btnConnect.TabIndex = 2;
@@ -78,13 +78,13 @@
             this.lblMessage.AutoSize = true;
             this.lblMessage.Location = new System.Drawing.Point(7, 51);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(65, 13);
+            this.lblMessage.Size = new System.Drawing.Size(103, 13);
             this.lblMessage.TabIndex = 2;
-            this.lblMessage.Text = "Сообщение";
+            this.lblMessage.Text = "Имя пользователя";
             // 
             // tbMailSlot
             // 
-            this.tbMailSlot.Location = new System.Drawing.Point(86, 10);
+            this.tbMailSlot.Location = new System.Drawing.Point(116, 10);
             this.tbMailSlot.Name = "tbMailSlot";
             this.tbMailSlot.Size = new System.Drawing.Size(181, 20);
             this.tbMailSlot.TabIndex = 0;
@@ -94,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 85);
+            this.ClientSize = new System.Drawing.Size(471, 85);
             this.Controls.Add(this.tbMailSlot);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.lblMailSlot);

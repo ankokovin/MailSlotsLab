@@ -34,6 +34,8 @@ namespace MailSlots
                 {
                     btnConnect.Enabled = false;
                     btnSend.Enabled = true;
+                    btnSend_Click(null, null);
+                    lblMessage.Text = "Сообщение";
                 }
                 else
                     MessageBox.Show("Не удалось подключиться к мейлслоту");
