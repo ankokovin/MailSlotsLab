@@ -15,6 +15,9 @@ namespace MailSlots
 {
     public partial class frmMain : Form
     {
+        private Dictionary<string, string> Nicknames = new Dictionary<string, string>();
+
+
         private int ClientHandleMailSlot;       // дескриптор мэйлслота
         private string MailSlotName = "\\\\" + Dns.GetHostName() + "\\mailslot\\ServerMailslot";    // имя мэйлслота, Dns.GetHostName() - метод, возвращающий имя машины, на которой запущено приложение
         private Thread t;                       // поток для обслуживания мэйлслота
@@ -36,11 +39,14 @@ namespace MailSlots
             t.Start();
         }
 
-
+        private int GetSourceIdx(string Message)
+        {
+            return Message.IndexOf(">>") - 1;
+        }
 
         private void ReceiveMessage()
         {
-            string msg = "";            // прочитанное сообщение
+            string reseviedMessage = "";            // прочитанное сообщение
             int MailslotSize = 0;       // максимальный размер сообщения
             int lpNextSize = 0;         // размер следующего сообщения
             int MessageCount = 0;       // количество сообщений в мэйлслоте
@@ -59,12 +65,25 @@ namespace MailSlots
                         byte[] buff = new byte[1024];                           // буфер прочитанных из мэйлслота байтов
                         DIS.Import.FlushFileBuffers(ClientHandleMailSlot);      // "принудительная" запись данных, расположенные в буфере операционной системы, в файл мэйлслота
                         DIS.Import.ReadFile(ClientHandleMailSlot, buff, 1024, ref realBytesReaded, 0);      // считываем последовательность байтов из мэйлслота в буфер buff
-                        msg = Encoding.Unicode.GetString(buff);                 // выполняем преобразование байтов в последовательность символов
-                        
+                        reseviedMessage = Encoding.Unicode.GetString(buff);                 // выполняем преобразование байтов в последовательность символов
+                        int sourceidx = GetSourceIdx(reseviedMessage);
+                        string source = reseviedMessage.Substring(0, sourceidx);
+                        string resultMessage = "";
+                        string content = reseviedMessage.Substring(sourceidx+3, reseviedMessage.IndexOf('\0')- (sourceidx + 3));
+                        if (Nicknames.ContainsKey(source))
+                        {
+                            string nickname = Nicknames[source];
+                            resultMessage =  nickname+":" + content;
+                        }
+                        else
+                        {
+                            Nicknames.Add(source, content);
+                            resultMessage = "["+ source +"]Новый пользователь: " + content;
+                        }
                         rtbMessages.Invoke((MethodInvoker)delegate
                         {
-                            if (msg != "")
-                                rtbMessages.Text += "\n >> " + msg + " \n";     // выводим полученное сообщение на форму
+                            if (resultMessage != "")
+                                rtbMessages.Text += " >> " + resultMessage + " \n";     // выводим полученное сообщение на форму
                         });
                         Thread.Sleep(500);                                      // приостанавливаем работу потока перед тем, как приcтупить к обслуживанию очередного клиента
                     }
